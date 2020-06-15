@@ -1,0 +1,51 @@
+{
+  "name": "@dnlup/create-package",
+  "version": "1.0.0",
+  "description": "Create a new, pre-configured package",
+  "main": "index.js",
+  "bin": {
+    "create-package": "cmd.js"
+  },
+  "scripts": {
+    "lint": "standard --fix",
+    "test": "tap test.js",
+    "doc": "markdown-toc -i README.md",
+    "release": "HUSKY_SKIP_HOOKS=1 standard-version",
+    "postrelease": "npm run push && npm publish",
+    "next": "HUSKY_SKIP_HOOKS=1 standard-version --prerelease",
+    "postnext": "npm run push && npm publish --tag next",
+    "push": "git push origin --follow-tags `git rev-parse --abbrev-ref HEAD`"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnlup/create-package.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6"
+  },
+  "keywords": [],
+  "author": "Daniele Belardi <dwon.dnl@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dnlup/create-package/issues"
+  },
+  "homepage": "https://github.com/dnlup/create-package#readme",
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.10",
+    "markdown-toc": "^1.2.0",
+    "standard": "^14.3.4",
+    "standard-version": "^8.0.0",
+    "tap": "^14.10.7"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "choosealicense-list": "^1.2.0",
+    "generify": "^4.1.0",
+    "parse-authors": "^0.2.4"
+  }
+}
