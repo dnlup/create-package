@@ -2,4 +2,4 @@
 
 const tap = require('tap')
 
-tap.todo('tests')
+tap.todo('Add tests')

@@ -36,6 +36,7 @@
   "homepage": "https://github.com/dnlup/create-package#readme",
   "devDependencies": {
     "husky": "^4.2.5",
+    "hyperid": "^2.0.5",
     "lint-staged": "^10.2.10",
     "markdown-toc": "^1.2.0",
     "standard": "^14.3.4",
