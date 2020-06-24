@@ -15,15 +15,28 @@ const mainTemplate = `
 module.exports = {}
 `
 
+const packageTemplate = {
+  scripts,
+  engines,
+  devDependencies: {
+    husky: devDependencies.husky,
+    'lint-staged': devDependencies['lint-staged'],
+    'markdown-toc': devDependencies['markdown-toc'],
+    standard: devDependencies.standard,
+    'standard-version': devDependencies['standard-version'],
+    tap: devDependencies.tap
+  }
+}
+
 function onFile (file, action = 'Generated') {
   info(`${action} ${file}`)
 }
 
 function generatePackage (context) {
   return new Promise((resolve, reject) => {
-    context.package.engines = engines
-    context.package.devDependencies = devDependencies
-    context.package.scripts = scripts
+    for (const field in packageTemplate) {
+      context.package[field] = Object.assign({}, context.package[field], packageTemplate[field])
+    }
     if (context.package.name.startsWith('@')) {
       context.package.publishConfig = { access: 'public' }
     }

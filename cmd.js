@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 'use strict'
+
 const { run, log } = require('./')
 
 function onDone () {

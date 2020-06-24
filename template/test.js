@@ -1,5 +1,5 @@
 'use strict'
 
-const tap = require('tap')
+const t = require('tap')
 
-tap.todo('Add tests')
+t.todo('Add tests')
