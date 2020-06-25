@@ -10,7 +10,9 @@ const { join } = require('path')
 const { rmdir, mkdtemp } = require('fs')
 const { tmpdir } = require('os')
 const { exec } = require('child_process')
+const { gte } = require('semver')
 
+const isGte12 = gte(process.versions.node, '12.0.0')
 const tmp = tmpdir()
 const cmd = require.resolve('./cmd.js')
 
@@ -22,7 +24,12 @@ t.beforeEach((done, t) => {
 })
 
 t.afterEach((done, t) => {
-  rmdir(t.context.dir, { recursive: true }, done)
+  if (isGte12) {
+    rmdir(t.context.dir, { recursive: true }, done)
+  } else {
+    const rimraf = require('rimraf')
+    rimraf(t.context.dir, done)
+  }
 })
 
 t.test('generate', t => {
