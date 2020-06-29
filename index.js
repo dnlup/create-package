@@ -34,10 +34,12 @@ function init () {
 Calling 'npm init'
 `)
     const args = process.argv.slice(2)
-    const npm = spawn('npm', ['init', ...args], { stdio: 'inherit' })
+    const cmd = process.platform === 'win32' ? 'npm.cmd' : 'npm'
+    const npm = spawn(cmd, ['init', ...args], { stdio: 'inherit' })
     npm.on('close', code => {
       return code !== 0 ? reject(new Error(`npm exited with code ${code}`)) : resolve()
     })
+    npm.on('error', reject)
   })
 }
 
