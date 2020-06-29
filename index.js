@@ -4,7 +4,9 @@ const { spawn } = require('child_process')
 const { join } = require('path')
 const authors = require('parse-authors')
 const defaultGenerator = require('./generator')
-const license = require('./license')
+// Specifying the extension to avoid clashes with the LICENSE file
+// on case insensitive file systems.
+const license = require('./license.js')
 const log = require('./log')
 
 function getAuthor (packageJson) {

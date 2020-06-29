@@ -3,7 +3,9 @@
 const { writeFile } = require('fs')
 const generify = require('generify')
 const { join } = require('path')
-const license = require('./license')
+// Specifying the extension to avois clashes with the LICENSE
+// file on case insensitive file systems.
+const license = require('./license.js')
 const { info } = require('./log')
 
 const template = join(__dirname, 'template')
