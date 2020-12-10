@@ -37,7 +37,6 @@ t.test('generate', t => {
     cwd: t.context.dir
   }, (err, stdout) => {
     t.error(err)
-    console.log(stdout)
     t.end()
   })
 })

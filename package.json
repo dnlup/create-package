@@ -7,15 +7,20 @@
     "create-package": "cmd.js"
   },
   "scripts": {
-    "lint": "standard --fix",
-    "test": "npm run lint && tap test.js",
-    "test:ci": "npm run test -- --cov --coverage-report=lcovonly",
+    "lint": "standard | snazzy",
+    "lint:fix": "standard --fix | snazzy",
+    "test": "tap test.js",
+    "pretest:ci": "npm run lint",
+    "test:ci": "npm test -- --cov --coverage-report=lcovonly",
     "doc": "markdown-toc -i README.md",
+    "push": "git push origin --follow-tags `git rev-parse --abbrev-ref HEAD`",
+    "prerelease": "npm ci && npm run lint && npm test",
     "release": "HUSKY_SKIP_HOOKS=1 standard-version",
-    "postrelease": "npm run push && npm publish",
-    "next": "HUSKY_SKIP_HOOKS=1 standard-version --prerelease",
-    "postnext": "npm run push && npm publish --tag next",
-    "push": "git push origin --follow-tags `git rev-parse --abbrev-ref HEAD`"
+    "postrelease": "npm run push",
+    "stable": "npm run release",
+    "poststable": "npm publish",
+    "next": "npm run release -- --prerelease",
+    "postnext": "npm publish --tag next"
   },
   "repository": {
     "type": "git",
@@ -41,6 +46,7 @@
     "markdown-toc": "^1.2.0",
     "rimraf": "^3.0.2",
     "semver": "^7.3.2",
+    "snazzy": "^9.0.0",
     "standard": "^14.3.4",
     "standard-version": "^8.0.0",
     "tap": "^14.10.7"

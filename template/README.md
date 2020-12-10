@@ -2,11 +2,18 @@
 
 [![npm version]()
 ![Tests]()
+[![codecov]()]()
+[![Known Vulnerabilities]()]()
 
 > __description__
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- toc -->
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+
+<!-- tocstop -->
 
 ## Installation
 
@@ -23,5 +30,3 @@ $ npm i __name__@next
 ```
 
 ## API
-
-## Contributing

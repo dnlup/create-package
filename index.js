@@ -28,6 +28,7 @@ function getContext () {
   }
 }
 
+// TODO: use https://github.com/npm/init-package-json
 function init () {
   return new Promise((resolve, reject) => {
     log.info(`
